@@ -1,0 +1,134 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+:root{
+  --font-size : 1.25rem;
+  --colors: #35c6a9;
+}
+
+/*variables*/
+body{
+  width: 100%;
+  min-height: 100vh;
+  padding: 10px 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+}
+.container{
+  max-width: 500px;
+  margin: 30px 0;
+  height: auto;
+  font-size: 1.5rem;
+  /* border: 1px solid brown; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.container h2{
+  text-align: center;
+  text-transform: uppercase;
+  /* border: 1px solid brown; */
+}
+form{
+  min-height: 400px;
+  margin: 10px;
+  padding: 10px;
+  background: var(--colors);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  transition: 0.5s;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+form:hover{
+  transform: translateY(-10px);
+  scale: 1.01;
+}
+div.box{
+  display: grid;
+  width: 90%;
+  padding: 10px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(4,1fr);  
+  /* border: 1px solid brown; */
+  align-items: center;
+}
+input[type="text"],
+input[type="number"],
+input[type='button'] {
+  width: 100%;
+  margin: 10px 0px 10px 0px;
+  border-radius: 5px;
+  outline: 0;
+  padding: 10px 15px;
+  font-size: 1.25rem;
+}
+/* Disable arrows for number input */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0; /* Optional */
+}
+input[type="radio"]{
+  width: 18px;
+  height: 18px;
+}
+input[type='button'] {
+  width: 60%;
+  text-transform: uppercase;
+  grid-column: 2 / 3;
+  border: 1px solid black;
+}
+input[type='button']:hover{
+  color: white;
+  background: black;
+}
+#tbl{
+  border-collapse: collapse;
+  margin: 25px 0 10px;
+  font-size: 1.1rem;
+  min-width: 450px;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+#tbl thead tr{
+  background-color: var(--colors);
+  color: white;
+  text-align: left;
+}
+#tbl :is(th, td){
+  padding: 12px 15px;
+}
+#tbl tr:nth-of-type(even){
+  color: var(--colors);
+  background-color: #f3f3f3;
+}
+#tbl tr:hover{
+  background: var(--colors);
+}
+#tbl tr:nth-of-type(even):hover{
+  background-color: black;
+}
+#tbl tr:last-of-type{
+  border-bottom: 2px solid var(--colors);
+}
+#tbl tr button#action-btn{
+  width: 80%;
+  padding: 8px 10px;
+  border-radius: 5px;
+  text-transform: uppercase;
+}
+#tbl tr button#action-btn:hover{
+  color: #fff;
+  background: #000;
+}
+

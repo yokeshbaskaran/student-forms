@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Forms</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>        
+    <section class="container">
+      <form method="post" name="sample" id="user-form">
+        <h2>Student Form</h2>
+        <div class="box">
+          <label>Name:</label>
+          <input type="text" id="username" class="inputbox name" />
+          <label>Age:</label>
+          <input type="number" inputmode="numeric" name="userage" class="inputbox age" />
+          <label>Gender:</label>
+          <div>
+            <input type="radio" name="gender" value="Male" class="inputbox gender"/>
+            <label>Male</label>
+            <input type="radio" name="gender" value="Female" class="inputbox gender"/>
+            <label>Female</label>
+          </div>
+          <input type="button" value="submit" onclick="inserts()" class="inputbox submit-btn"/>
+        </div>
+      </form>
+
+      <p id="item-count">Number of Data: 0</p>
+
+      <table id="tbl">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="tbl-data">
+          <!--Contents display here-->
+          <!-- <tr>
+            <td>Name</td>
+            <td>Name</td>
+            <td>Name</td>
+            <td id="action-btn">Name</td>
+          </tr> -->
+        </tbody>
+      </table>
+    </section>
+
+    <script>
+      function inserts() {
+        var tablename = document.getElementById("tbl-data");
+        var username = document.getElementById("username").value;
+        //name - username or "use": id - username for input field values.
+        var userage = document.sample.userage.value;
+        var gender = document.sample.gender.value; 
+
+        if (!isNaN(username)) {
+          alert("Username cannot be a number!");
+          return; // Exit the function if username is a number
+        }
+
+        if (username && userage && gender) 
+        {
+        var newtr = document.createElement("tr");
+        var tdone = document.createElement("td");
+        newtr.append(tdone);
+        tdone.textContent = username;
+        var tdtwo = document.createElement("td");
+        newtr.append(tdtwo);
+        tdtwo.textContent = userage;
+        var tdthree = document.createElement("td");
+        newtr.append(tdthree);
+        tdthree.textContent = gender;
+        var newbtn = document.createElement("td");
+        newbtn.innerHTML =
+          '<button id="action-btn" onclick="deleteitem(event)">Delete</button>';
+        newtr.append(newbtn);
+        tablename.append(newtr);  
+        countItems()         
+        }
+        else{
+          alert("Enter Details properly!")
+        }   
+      }
+      
+      function countItems() {
+          var tbody = document.getElementById("tbl-data");
+          var rows = tbody.getElementsByTagName("tr");
+          var itemCount = rows.length;
+          document.getElementById("item-count").textContent = "Number of items: " + itemCount;
+        }
+
+      function deleteitem(event) {
+        var targetElement = event.target;
+        // Step 2: Navigate to the parent
+        var parentElement = targetElement.parentElement;
+        // Step 3: Navigate to the grandparent
+        var grandparentElement = parentElement.parentElement;
+        // Step 4: Remove the grandparent element
+        grandparentElement.remove();
+        countItems();
+      }
+    </script>
+  </body>
+</html>
